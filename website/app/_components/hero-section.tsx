@@ -96,7 +96,7 @@ export function HeroSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none hero-glow" />
 
       {/* Small glowing orbs — синие */}
-      <div className="absolute top-[30%] left-[10%] w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse-glow" />
+      <div className="absolute top-[52%] left-[10%] w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse-glow" />
       <div className="absolute top-[60%] left-[25%] w-1.5 h-1.5 rounded-full bg-[var(--primary)] animate-pulse-glow" style={{ animationDelay: '1s' }} />
       <div className="absolute bottom-[30%] left-[15%] w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse-glow" style={{ animationDelay: '2s' }} />
 
