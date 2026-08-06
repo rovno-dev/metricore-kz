@@ -19,7 +19,40 @@ export default function Footer() {
           {/* Бренд */}
           <div className="max-w-sm">
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-(--primary)" />
+              {/* Векторный логотип */}
+              <svg
+                className="w-9 h-9 text-(--primary)"
+                viewBox="0 0 32 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="1.5"
+                  y="1.5"
+                  width="29"
+                  height="29"
+                  rx="9"
+                  stroke="currentColor"
+                  strokeOpacity="0.3"
+                  strokeWidth="1.5"
+                  fill="currentColor"
+                  fillOpacity="0.05"
+                />
+                <path
+                  d="M7 23 L11 13 L15 19 L19 10 L25 23"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                <circle
+                  cx="21"
+                  cy="5.5"
+                  r="2"
+                  fill="currentColor"
+                />
+              </svg>
               <span className="text-display-3 font-heading font-bold tracking-tighter">
                 METRICORE
               </span>
