@@ -112,21 +112,30 @@ export function CTAFormSection() {
                 <span className="text-caption text-[var(--on-bg-low)]">Форма заявки</span>
               </div>
               
-              {/* iframe: высота 650, нижние 52px обрезаны через clipPath —
-                  там футер "Создано пользователем с помощью Яндекс Форм" */}
-              <div className="p-3 lg:p-4 bg-transparent">
-                <iframe 
-                  src="https://forms.yandex.ru/cloud/6a7478fa505690096f0d3e17/?iframe=1" 
-                  name="ya-form-6a7478fa505690096f0d3e17" 
-                  width="100%" 
-                  height="630"
-                  frameBorder="0"
-                  className="w-full bg-transparent rounded-xl"
-                  style={{
-                    clipPath: 'inset(0 0 32px 0)',
-                  }}
-                ></iframe>
-              </div>
+              {/* iframe: высота 680 — кнопка видна даже при ошибках валидации */}
+        {/* iframe внутри прокручиваемого контейнера, нижняя часть обрезана */}
+<div
+  className="p-3 lg:p-4 bg-transparent"
+  style={{
+    height: '560px',
+    overflowY: 'auto',
+    overscrollBehavior: 'contain',
+    WebkitOverflowScrolling: 'touch',
+    touchAction: 'pan-y',
+  }}
+>
+  <iframe
+    src="https://forms.yandex.ru/cloud/6a7478fa505690096f0d3e17/?iframe=1"
+    name="ya-form-6a7478fa505690096f0d3e17"
+    width="100%"
+    height="680"                          // высота с запасом на ошибки
+    frameBorder="0"
+    className="w-full bg-transparent rounded-xl"
+    style={{
+      clipPath: 'inset(0 0 82px 0)',      // скрываем нижние 50px (футер)
+    }}
+  />
+</div>
             </div>
           </div>
         </div>

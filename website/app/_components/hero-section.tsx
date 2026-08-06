@@ -123,7 +123,7 @@ export function HeroSection() {
                 asChild
                 size="large"
                 shape="round"
-                className="bg-[var(--brand-7)] hover:bg-[var(--brand-8)] text-white shadow-lg shadow-[var(--brand-5)]/25 transition-all hover:shadow-xl hover:shadow-[var(--brand-5)]/30 hover:-translate-y-0.5"
+                className="bg-[var(--brand-7)] hover:bg-[var(--brand-8)] text-white shadow-lg shadow-[var(--brand-5)]/25 transition-all hover:shadow-xl hover:shadow-[var(--brand-5)]/30"
               >
                 <a href="#cta" className="gap-2">
                   <span>Оставить заявку</span>

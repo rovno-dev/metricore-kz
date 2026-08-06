@@ -85,7 +85,7 @@ export default function Header() {
               asChild
               size="small"
               shape="round"
-              className="!bg-(--primary) !text-white shadow-sm hover:shadow-md transition-all"
+              className="bg-[var(--brand-9)] hover:bg-[var(--brand-8)] !text-white shadow-sm hover:shadow-md transition-all"
             >
               <a href="#cta">Оставить заявку</a>
             </Button>
