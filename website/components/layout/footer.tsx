@@ -18,9 +18,12 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 mb-14">
           {/* Бренд */}
           <div className="max-w-sm">
-            <span className="text-display-3 font-heading font-bold tracking-tighter block mb-3">
-              METRICORE
-            </span>
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-2 h-2 rounded-full bg-(--primary)" />
+              <span className="text-display-3 font-heading font-bold tracking-tighter">
+                METRICORE
+              </span>
+            </div>
             <p className="text-body-4 text-(--on-bg-medium) leading-relaxed">
               Алматы, Казахстан. Работаем со всем миром. Внедряем культуру принятия решений на основе данных.
             </p>
@@ -29,18 +32,21 @@ export default function Footer() {
           {/* Навигация + контакты */}
           <div className="flex gap-16">
             <nav className="flex flex-col gap-3">
+              <h4 className="text-body-4 font-semibold text-(--primary) mb-1">Навигация</h4>
               {links.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors"
+                  className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors relative py-0.5 group"
                 >
                   {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-px bg-(--primary) transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
             </nav>
 
             <div className="flex flex-col gap-3">
+              <h4 className="text-body-4 font-semibold text-(--primary) mb-1">Контакты</h4>
               <a
                 href="mailto:hello@metricore.kz"
                 className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors"
@@ -60,9 +66,23 @@ export default function Footer() {
           <ThemeSwitcher />
         </div>
 
-        {/* Низ: копирайт + соцсети */}
+        {/* Низ: копирайт + соцсети + ссылка на разработку */}
         <div className="pt-6 border-t border-(--outline) flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-body-6 text-(--on-bg-low)">© 2026 Metricore Agency. Все права защищены.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-body-6 text-(--on-bg-low)">© 2026 Metricore Agency. Все права защищены.</p>
+            <span className="hidden sm:inline w-1 h-1 rounded-full bg-(--primary)" />
+            <p className="text-body-6 text-(--on-bg-low)">
+              Сделано в{" "}
+              <Link
+                href="https://rovno.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-(--primary) hover:underline underline-offset-2"
+              >
+                Rovno.dev
+              </Link>
+            </p>
+          </div>
           <div className="flex gap-3">
             <Button variant="tonal-card" size="icon-small" asChild>
               <Link href="https://t.me/metricore" aria-label="Telegram">

@@ -1,9 +1,9 @@
 import { Container } from "@/components/ui/container";
 
 const steps = [
-  { num: "01", text: "Обсуждаем задачи и KPI", accent: "var(--brand-6)" },
-  { num: "02", text: "Проводим аудит текущих данных", accent: "var(--orange-6)" },
-  { num: "03", text: "Готовим коммерческое предложение", accent: "var(--green-6)" },
+  { num: "01", text: "Обсуждаем задачи и KPI" },
+  { num: "02", text: "Проводим аудит текущих данных" },
+  { num: "03", text: "Готовим коммерческое предложение" },
 ];
 
 export function CTAFormSection() {
@@ -25,7 +25,6 @@ export function CTAFormSection() {
           border: 1px solid rgba(255, 255, 255, 0.2);
           box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
         }
-        /* В тёмной теме шапка и рамки тоже под светлый фон */
         .dark .glass-form .text-caption {
           color: var(--gray-6);
         }
@@ -41,25 +40,29 @@ export function CTAFormSection() {
             linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
           background-size: 50px 50px;
         }
-          .cta-glow-brand {
-  background: radial-gradient(circle, var(--brand-1) 0%, transparent 70%);
-  opacity: 0.2;
-}
-.cta-glow-green {
-  background: radial-gradient(circle, var(--green-1) 0%, transparent 70%);
-  opacity: 0.15;
-}
-.dark .cta-glow-brand {
-  opacity: 0.06;
-}
-.dark .cta-glow-green {
-  opacity: 0.05;
-}
+
+        /* Светло-синие свечения — единый класс */
+        .cta-glow {
+          background: radial-gradient(circle, var(--brand-1) 0%, transparent 70%);
+          opacity: 0.2;
+        }
+        .dark .cta-glow {
+          opacity: 0.06;
+        }
+
+        /* Тёмно-синяя рамка вокруг формы */
+        .cta-ring {
+          border-color: var(--primary);
+          opacity: 0.25;
+        }
+        .dark .cta-ring {
+          opacity: 0.15;
+        }
       `}</style>
 
       <div className="absolute inset-0 grid-bg-light pointer-events-none" />
-    <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none -translate-y-1/2 cta-glow-brand" />
-<div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none cta-glow-green" />
+      <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none -translate-y-1/2 cta-glow" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none cta-glow" />
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
@@ -84,7 +87,7 @@ export function CTAFormSection() {
                     <div className="relative z-10 flex-shrink-0">
                       <div 
                         className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm transition-all duration-300 group-hover:scale-110"
-                        style={{ backgroundColor: step.accent, color: "var(--white)", boxShadow: `0 4px 16px ${step.accent}40` }}
+                        style={{ backgroundColor: "var(--primary)", color: "var(--white)", boxShadow: "0 4px 16px color-mix(in srgb, var(--primary) 25%, transparent)" }}
                       >
                         {step.num}
                       </div>
@@ -99,7 +102,7 @@ export function CTAFormSection() {
 
             <div className="mt-12 pt-8 border-t border-[var(--outline)]">
               <div className="flex items-center gap-4">
-                <div className="w-2 h-2 rounded-full bg-[var(--green-5)] animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
                 <span className="text-caption text-[var(--on-bg-low)]">Ответим в течение 24 часов</span>
               </div>
             </div>
@@ -107,7 +110,7 @@ export function CTAFormSection() {
 
           {/* Правая колонка — форма со стеклом */}
           <div className="relative">
-            <div className="absolute -inset-3 rounded-[2.5rem] border border-[var(--outline)] pointer-events-none" />
+            <div className="absolute -inset-3 rounded-[2.5rem] border cta-ring pointer-events-none" />
             
             <div className="glass-form rounded-[2rem] overflow-hidden">
               {/* Шапка */}
@@ -120,12 +123,12 @@ export function CTAFormSection() {
                 <span className="text-caption text-[var(--on-bg-low)]">Форма заявки</span>
               </div>
               
-              {/* iframe: высота 680 — кнопка видна даже при ошибках валидации */}
-        {/* iframe внутри прокручиваемого контейнера, нижняя часть обрезана */}
+              {/* iframe внутри прокручиваемого контейнера */}
+          {/* iframe внутри прокручиваемого контейнера — с запасом на ошибки */}
 <div
   className="p-3 lg:p-4 bg-transparent"
   style={{
-    height: '560px',
+    height: '600px',
     overflowY: 'auto',
     overscrollBehavior: 'contain',
     WebkitOverflowScrolling: 'touch',
@@ -136,11 +139,11 @@ export function CTAFormSection() {
     src="https://forms.yandex.ru/cloud/6a7478fa505690096f0d3e17/?iframe=1"
     name="ya-form-6a7478fa505690096f0d3e17"
     width="100%"
-    height="680"                          // высота с запасом на ошибки
+    height="800"
     frameBorder="0"
     className="w-full bg-transparent rounded-xl"
     style={{
-      clipPath: 'inset(0 0 82px 0)',      // скрываем нижние 50px (футер)
+      clipPath: 'inset(0 0 50px 0)',
     }}
   />
 </div>
