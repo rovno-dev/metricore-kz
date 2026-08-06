@@ -1,0 +1,25 @@
+# name: Deploy Frontend
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Execute remote command via SSH
+#         uses: appleboy/ssh-action@v1.0.3
+#         with:
+#           host: ${{ secrets.HOST }}
+#           username: ${{ secrets.USER }}
+#           key: ${{ secrets.SSH_KEY }}
+#           port: ${{ secrets.PORT }}
+#           command_timeout: 20m
+#           script: |
+#             cd ${{ secrets.PROJECT_PATH }}
+#             git fetch origin main && git reset --hard origin/main
+
+#             cd ${{ secrets.INFRA_PATH }}
+#             make rebuild ENV=prod SERVICES=${{ secrets.CONTAINER_NAME }}

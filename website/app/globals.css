@@ -1,0 +1,443 @@
+/* LLM context: Adding refined motion primitives and global entry animations for high-end feel */
+@import url('./unidoka-ui-base.css');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@plugin "../tailwind.config.js";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --primary: var(--brand-9);
+  --on-primary: var(--white);
+  --primary-card: var(--brand-0);
+  --on-primary-card: var(--gray-9);
+
+  --outline: var(--gray-3);
+  --bg: var(--gray-0);
+  --bg-disabled: var(--gray-3);
+  --on-bg-disabled: var(--gray-6);
+  --card: var(--white);
+
+  --on-bg-high: var(--gray-9);
+  --on-bg-medium: var(--gray-7);
+  --on-bg-low: var(--gray-6);
+
+  --error: var(--red-9);
+  --on-error: var(--white);
+  --error-card: var(--red-1);
+  --on-error-card: var(--red-7);
+
+  --success: var(--green-7);
+  --on-success: var(--white);
+  --success-card: var(--green-1);
+  --on-success-card: var(--green-7);
+
+  --warning: var(--orange-9);
+  --on-warning: var(--white);
+  --warning-card: var(--orange-0);
+  --on-warning-card: var(--orange-7);
+
+  --primary-glass: color-mix(in srgb, var(--primary), transparent 95%);
+  --on-primary-glass: var(--primary);
+  --card-glass: color-mix(in srgb, var(--card), transparent 95%);
+  --outline-primary-glass: conic-gradient(from 180deg at 50% 50%,
+      var(--primary) 0%,
+      color-mix(in srgb, var(--primary), transparent 80%) 25%,
+      var(--primary) 50%,
+      color-mix(in srgb, var(--primary), transparent 80%) 75%,
+      var(--primary) 100%);
+  --outline-glass: conic-gradient(from 180deg at 50% 50%,
+      var(--outline) 0%,
+      color-mix(in srgb, var(--outline), transparent 80%) 25%,
+      var(--outline) 50%,
+      color-mix(in srgb, var(--outline), transparent 80%) 75%,
+      var(--outline) 100%);
+
+  --state-hover: color-mix(in srgb, #121212, transparent 95%);
+  --state-focus: color-mix(in srgb, #121212, transparent 92%);
+
+  --g-light: linear-gradient(to top, var(--white) 0%, color-mix(in srgb, var(--white), transparent 100%) 100%);
+  --on-g-light: var(--gray-9);
+  --g-dark: linear-gradient(to top, var(--dark-4) 0%, color-mix(in srgb, var(--dark-4), transparent 100%) 100%);
+  --on-g-dark: var(--white);
+
+  --font-sans: "Noto Sans", sans-serif;
+  --font-heading: "Oswald", sans-serif;
+
+  --lh-heading: 1.2;
+  --lh-body: 1.5;
+
+  --display-1-size: 3rem;
+  --display-1-weight: 600;
+  --display-1-font-face: var(--font-heading);
+  --display-1-lh: var(--lh-heading);
+
+  --display-2-size: 2.25rem;
+  --display-2-weight: 600;
+  --display-2-font-face: var(--font-heading);
+  --display-2-lh: var(--lh-heading);
+
+  --display-3-size: 2rem;
+  --display-3-weight: 600;
+  --display-3-font-face: var(--font-heading);
+  --display-3-lh: var(--lh-heading);
+
+  --display-4-size: 1.5rem;
+  --display-4-weight: 600;
+  --display-4-font-face: var(--font-heading);
+  --display-4-lh: var(--lh-heading);
+
+  --display-5-size: 1.25rem;
+  --display-5-weight: 600;
+  --display-5-font-face: var(--font-heading);
+  --display-5-lh: var(--lh-heading);
+
+  --display-6-size: 1.125rem;
+  --display-6-weight: 600;
+  --display-6-font-face: var(--font-heading);
+  --display-6-lh: var(--lh-heading);
+
+  --heading-1-size: 1.875rem;
+  --heading-1-weight: 500;
+  --heading-1-font-face: var(--font-sans);
+  --heading-1-lh: var(--lh-heading);
+
+  --heading-2-size: 1.5rem;
+  --heading-2-weight: 500;
+  --heading-2-font-face: var(--font-sans);
+  --heading-2-lh: var(--lh-heading);
+
+  --heading-3-size: 1.25rem;
+  --heading-3-weight: 500;
+  --heading-3-font-face: var(--font-sans);
+  --heading-3-lh: var(--lh-heading);
+
+  --heading-4-size: 1.125rem;
+  --heading-4-weight: 500;
+  --heading-4-font-face: var(--font-sans);
+  --heading-4-lh: var(--lh-heading);
+
+  --heading-5-size: 1rem;
+  --heading-5-weight: 500;
+  --heading-5-font-face: var(--font-sans);
+  --heading-5-lh: var(--lh-heading);
+
+  --heading-6-size: 0.875rem;
+  --heading-6-weight: 500;
+  --heading-6-font-face: var(--font-sans);
+  --heading-6-lh: var(--lh-heading);
+
+  --body-1-size: 1.25rem;
+  --body-1-weight: 400;
+  --body-1-font-face: var(--font-sans);
+  --body-1-lh: var(--lh-body);
+
+  --body-2-size: 1.125rem;
+  --body-2-weight: 400;
+  --body-2-font-face: var(--font-sans);
+  --body-2-lh: var(--lh-body);
+
+  --body-3-size: 1rem;
+  --body-3-weight: 400;
+  --body-3-font-face: var(--font-sans);
+  --body-3-lh: var(--lh-body);
+
+  --body-4-size: 0.875rem;
+  --body-4-weight: 400;
+  --body-4-font-face: var(--font-sans);
+  --body-4-lh: var(--lh-body);
+
+  --body-5-size: 0.75rem;
+  --body-5-weight: 400;
+  --body-5-font-face: var(--font-sans);
+  --body-5-lh: var(--lh-body);
+
+  --body-6-size: 0.625rem;
+  --body-6-weight: 400;
+  --body-6-font-face: var(--font-sans);
+  --body-6-lh: var(--lh-body);
+}
+
+@theme inline {
+  --font-heading: var(--font-heading);
+  --font-sans: var(--font-sans);
+  --color-sidebar-ring: var(--yellow-10);
+  --color-sidebar-border: var(--outline);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar: var(--card);
+  --color-ring: var(--primary);
+  --color-input: var(--input);
+  --color-border: var(--outline);
+  --color-destructive: var(--error);
+  --color-muted-foreground: var(--on-bg-disabled);
+  --color-muted: var(--bg-disabled);
+  --color-secondary-foreground: var(--on-primary-card);
+  --color-secondary: var(--primary-card);
+  --color-primary-foreground: var(--on-primary);
+  --color-primary: var(--primary);
+  --color-popover: var(--card);
+  --color-card: var(--card);
+  --color-foreground: var(--on-bg-high);
+  --color-background: var(--bg);
+  --radius-sm: var(--radius-1);
+  --radius-lg: var(--radius-2);
+  --radius-xl: var(--radius-3);
+  --radius-2xl: var(--radius-4);
+  --radius-3xl: var(--radius-5);
+  --radius-4xl: var(--radius-6);
+  --radius-5xl: var(--radius-7);
+  --radius-6xl: var(--radius-8);
+  --radius-7xl: var(--radius-9);
+  --radius-8xl: var(--radius-10);
+  --blur-glass: 10px;
+  --shadow-card: 0 1px 6px 0 rgb(0 0 0 / 0.05);
+
+  --animate-reveal: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-reveal-slow: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+
+.dark {
+  --primary: var(--brand-9);
+  --on-primary: var(--white);
+  --primary-card: var(--brand-3);
+  --on-primary-card: var(--dark-9);
+  --outline: var(--dark-6);
+  --bg: var(--dark-8);
+  --bg-disabled: var(--gray-9);
+  --on-bg-disabled: var(--gray-7);
+  --card: var(--dark-9);
+  --on-bg-high: var(--white);
+  --on-bg-medium: var(--dark-1);
+  --on-bg-low: var(--dark-2);
+  --error: var(--red-9);
+  --on-error: var(--white);
+  --error-card: var(--red-2);
+  --on-error-card: var(--red-8);
+  --success: var(--green-9);
+  --on-success: var(--white);
+  --success-card: var(--green-1);
+  --on-success-card: var(--green-7);
+  --warning: var(--orange-9);
+  --on-warning: var(--white);
+  --warning-card: var(--orange-0);
+  --on-warning-card: var(--orange-9);
+  --state-hover: color-mix(in srgb, #fff, transparent 95%);
+  --state-focus: color-mix(in srgb, #fff, transparent 92%);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+  }
+
+  html {
+    @apply font-sans scroll-smooth;
+  }
+}
+
+/* Hard-coded CSS for animation timelines to bypass any Tailwind/PostCSS processing errors */
+@supports (animation-timeline: view()) {
+  @keyframes scroll-move-ltr {
+    from {
+      transform: translateX(30%);
+    }
+
+    to {
+      transform: translateX(-30%);
+    }
+  }
+
+  @keyframes scroll-move-rtl {
+    from {
+      transform: translateX(-30%);
+    }
+
+    to {
+      transform: translateX(30%);
+    }
+  }
+
+  .marquee-scroll-ltr {
+    display: block;
+    will-change: transform;
+    animation: scroll-move-ltr linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .marquee-scroll-rtl {
+    display: block;
+    will-change: transform;
+    animation: scroll-move-rtl linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+/* Fallback for browsers without animation-timeline support (Safari) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports not (animation-timeline: view()) {
+    @keyframes fallback-marquee {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    .marquee-scroll-ltr,
+    .marquee-scroll-rtl {
+      animation: fallback-marquee 20s linear infinite;
+    }
+  }
+}
+
+/* Global scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--outline) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--outline);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--on-bg-low);
+}
+
+/* Custom animations for hero */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Utility classes for animations */
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 12s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: float 14s ease-in-out infinite 2s;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Scroll reveal base */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Если вы используете animate-reveal (keyframes) одновременно,
+   то можно совместить: сначала скрыто, потом анимация */
+.scroll-reveal.animate-reveal {
+  animation: none;
+  /* отключаем анимацию по умолчанию */
+}
+
+.scroll-reveal.is-visible.animate-reveal {
+  animation: reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Marquee animation for TrustedBrands */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* Marquee animation for TrustedBrands */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}

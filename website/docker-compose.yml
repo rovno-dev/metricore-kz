@@ -1,0 +1,18 @@
+services:
+  next-js:
+    container_name: next-js
+    profiles: [ "prod" ]
+    build:
+      context: .
+      target: prod
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.next-js.rule=Host(`yourdomain.com`) || Host(`localhost`)"
+      - "traefik.http.services.next-js.loadbalancer.server.port=3000"
+      - "traefik.http.routers.next-js.entrypoints=web"
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    driver: bridge
