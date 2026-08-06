@@ -7,7 +7,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+
 :root {
+  --glass-bg: rgba(255, 255, 255, 0.063);
+  --glass-border: rgba(255, 255, 255, 0.723);
+  --glass-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.02),
+    0 4px 16px rgba(0, 0, 0, 0.04),
+    0 12px 48px rgba(0, 0, 0, 0.03);
+  --grid-line: rgba(0, 0, 0, 0.015);
+  --glass-blur: 20px;
+
+
   --primary: var(--brand-9);
   --on-primary: var(--white);
   --primary-card: var(--brand-0);
@@ -237,6 +249,14 @@
   --on-warning-card: var(--orange-9);
   --state-hover: color-mix(in srgb, #fff, transparent 95%);
   --state-focus: color-mix(in srgb, #fff, transparent 92%);
+
+ --glass-bg: rgba(18, 20, 24, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 12px 48px rgba(0, 0, 0, 0.5);
+  --grid-line: rgba(255, 255, 255, 0.011);
 }
 
 @layer base {
@@ -311,6 +331,8 @@
     }
   }
 }
+
+
 
 /* Global scrollbar styles */
 * {

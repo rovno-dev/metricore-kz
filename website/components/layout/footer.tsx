@@ -4,34 +4,76 @@ import { TelegramLogotypeMonoIcon, VKLogotypeMonoIcon } from "@/components/icons
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+const links = [
+  { name: "Услуги", href: "#services" },
+  { name: "Результаты", href: "#stats" },
+  { name: "Контакты", href: "#footer" },
+];
+
 export default function Footer() {
   return (
-    <footer id="footer" className="bg-card pt-20 pb-10 border-t border-(--outline)">
+    <footer id="footer" className="pt-20 pb-8 border-t border-(--outline)">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 lg:col-span-2">
-            <span className="text-display-3 font-heading font-bold mb-6 block">METRICORE</span>
-            <p className="text-body-4 text-(--on-bg-medium) max-w-sm">
+        {/* Верх: бренд + навигация + переключатель темы */}
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10 mb-14">
+          {/* Бренд */}
+          <div className="max-w-sm">
+            <span className="text-display-3 font-heading font-bold tracking-tighter block mb-3">
+              METRICORE
+            </span>
+            <p className="text-body-4 text-(--on-bg-medium) leading-relaxed">
               Алматы, Казахстан. Работаем со всем миром. Внедряем культуру принятия решений на основе данных.
             </p>
           </div>
-          <div>
-            <h4 className="text-heading-6 mb-4 uppercase text-(--on-bg-low)">Контакты</h4>
-            <ul className="space-y-2">
-              <li><a href="mailto:hello@metricore.kz" className="text-body-4 hover:text-(--primary)">hello@metricore.kz</a></li>
-              <li><a href="https://t.me/metricore" className="text-body-4 hover:text-(--primary)">@metricore</a></li>
-            </ul>
+
+          {/* Навигация + контакты */}
+          <div className="flex gap-16">
+            <nav className="flex flex-col gap-3">
+              {links.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            <div className="flex flex-col gap-3">
+              <a
+                href="mailto:hello@metricore.kz"
+                className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors"
+              >
+                hello@metricore.kz
+              </a>
+              <a
+                href="https://t.me/metricore"
+                className="text-body-4 text-(--on-bg-medium) hover:text-(--primary) transition-colors"
+              >
+                @metricore
+              </a>
+            </div>
           </div>
-          <div>
-            <h4 className="text-heading-6 mb-4 uppercase text-(--on-bg-low)">Настройки</h4>
-            <ThemeSwitcher />
-          </div>
+
+          {/* Переключатель темы */}
+          <ThemeSwitcher />
         </div>
-        <div className="pt-8 border-t border-(--outline) flex flex-col sm:flex-row justify-between items-center gap-4">
+
+        {/* Низ: копирайт + соцсети */}
+        <div className="pt-6 border-t border-(--outline) flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-body-6 text-(--on-bg-low)">© 2026 Metricore Agency. Все права защищены.</p>
-          <div className="flex gap-2">
-             <Button variant="text" size="icon-small" asChild><Link href="#"><TelegramLogotypeMonoIcon /></Link></Button>
-             <Button variant="text" size="icon-small" asChild><Link href="#"><VKLogotypeMonoIcon /></Link></Button>
+          <div className="flex gap-3">
+            <Button variant="tonal-card" size="icon-small" asChild>
+              <Link href="https://t.me/metricore" aria-label="Telegram">
+                <TelegramLogotypeMonoIcon />
+              </Link>
+            </Button>
+            <Button variant="tonal-card" size="icon-small" asChild>
+              <Link href="#" aria-label="VK">
+                <VKLogotypeMonoIcon />
+              </Link>
+            </Button>
           </div>
         </div>
       </Container>
