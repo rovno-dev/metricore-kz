@@ -1,16 +1,22 @@
-import { HeroSection } from "./_components/hero-section";
-import { FeaturedProducts } from "./_components/featured-products";
-import { TrustedBrands } from "./_components/trusted-brands";
-import { FeaturedCollections } from "./_components/featured-collections";
-import { ElementsShowcase } from "./_components/elements-showcase";
-import { TypographyColorShowcase } from "./_components/typography-color-showcase";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { CollectionCarousel } from "./_components/collection-carousel";
 import { Metadata } from "next";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { HeroSection } from "./_components/hero-section";
+import { ServicesSection } from "./_components/services-section";
+import { StatsSection } from "./_components/stats-section";
+import { CTAFormSection } from "./_components/cta-form-section";
 
 export const metadata: Metadata = {
-  title: 'Home - Premium E-commerce',
-  description: 'Discover premium gear for builders, thinkers, and creators. Shop hoodies, mugs, notebooks, and more.',
+  title: 'Metricore | Агентство маркетинговой аналитики и стратегии',
+  description: 'Помогаем бизнесу расти на основе данных. Веб-аналитика, маркетинговые воронки и Digital-стратегия с гарантией результата.',
+  openGraph: {
+    title: 'Metricore - Превращаем данные в стратегию роста',
+    description: 'Внедряем аналитику и строим воронки продаж.',
+    url: 'https://metricore.kz',
+    siteName: 'Metricore',
+    images: [{ url: '/favicon.png' }],
+    locale: 'ru_RU',
+    type: 'website',
+  },
 };
 
 export default function HomePage() {
@@ -20,16 +26,13 @@ export default function HomePage() {
         <HeroSection />
       </ScrollReveal>
       <ScrollReveal delay={100}>
-        <FeaturedProducts />
-      </ScrollReveal>
-      <ScrollReveal delay={120}>
-        <CollectionCarousel />
+        <StatsSection />
       </ScrollReveal>
       <ScrollReveal delay={150}>
-        <TrustedBrands />
+        <ServicesSection />
       </ScrollReveal>
       <ScrollReveal delay={200}>
-        <FeaturedCollections />
+        <CTAFormSection />
       </ScrollReveal>
     </>
   );
