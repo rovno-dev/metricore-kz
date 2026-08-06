@@ -11,7 +11,6 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Ждём монтирования на клиенте, чтобы не было расхождения SSR и клиента
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -25,7 +24,6 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       <Container className="pt-3">
-        {/* Стеклянная плавающая панель */}
         <div className="h-[56px] flex items-center justify-between rounded-5xl border border-white/20 bg-(--bg)/[0.65] backdrop-blur-[20px] shadow-[0_1px_4px_rgba(0,0,0,0.04)] px-4 md:px-6">
           {/* Логотип */}
           <Link href="/" className="flex items-center gap-2 group">
@@ -50,7 +48,6 @@ export default function Header() {
 
           {/* Правая часть */}
           <div className="flex items-center gap-3">
-            {/* Переключатель темы — рендерим только после монтирования */}
             {mounted && (
               <div className="flex items-center gap-1 rounded-full border border-(--outline) p-1">
                 <button
@@ -58,7 +55,7 @@ export default function Header() {
                   aria-label="Светлая тема"
                   className={`flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
                     theme === "light"
-                      ? "bg-(--primary) text-white"
+                      ? "bg-(--primary) text-white [&_svg]:text-white [&_svg]:fill-white [&_svg]:stroke-white"
                       : "text-(--on-bg-low) hover:text-(--on-bg)"
                   }`}
                 >
@@ -69,7 +66,7 @@ export default function Header() {
                   aria-label="Тёмная тема"
                   className={`flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
                     theme === "dark"
-                      ? "bg-(--primary) text-white"
+                      ? "bg-(--primary) text-white [&_svg]:text-white [&_svg]:fill-white [&_svg]:stroke-white"
                       : "text-(--on-bg-low) hover:text-(--on-bg)"
                   }`}
                 >
@@ -80,7 +77,7 @@ export default function Header() {
                   aria-label="Системная тема"
                   className={`flex items-center justify-center w-7 h-7 rounded-full transition-colors ${
                     theme === "system"
-                      ? "bg-(--primary) text-white"
+                      ? "bg-(--primary) text-white [&_svg]:text-white [&_svg]:fill-white [&_svg]:stroke-white"
                       : "text-(--on-bg-low) hover:text-(--on-bg)"
                   }`}
                 >
@@ -89,7 +86,6 @@ export default function Header() {
               </div>
             )}
 
-            {/* Кнопка — рендерим всегда, она не зависит от темы */}
             <Button
               asChild
               size="small"

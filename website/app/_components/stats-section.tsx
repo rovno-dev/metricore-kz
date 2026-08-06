@@ -1,15 +1,15 @@
 import { Container } from "@/components/ui/container";
 
 const stats = [
-  { value: "5+", label: "лет на рынке", accent: "var(--brand-6)" },
-  { value: "120+", label: "проектов", accent: "var(--green-6)" },
-  { value: "3,2 млн ₽", label: "бюджет в управлении", accent: "var(--orange-6)" },
-  { value: "42%", label: "прирост конверсии", accent: "var(--teal-6)" },
+  { value: "5+", label: "лет на рынке" },
+  { value: "120+", label: "проектов" },
+  { value: "3,2 млн ₽", label: "бюджет в управлении" },
+  { value: "42%", label: "прирост конверсии" },
 ];
 
 export function StatsSection() {
   return (
-    <section className="relative py-24 overflow-hidden bg-[var(--bg)]" id="stats" >
+    <section className="relative py-24 overflow-hidden bg-[var(--bg)]" id="stats">
       <style>{`
         @keyframes count-up {
           from { opacity: 0; transform: translateY(20px); }
@@ -51,9 +51,9 @@ export function StatsSection() {
           <span className="inline-block text-caption text-[var(--on-bg-low)] uppercase tracking-[0.2em] mb-4">
             Результаты в цифрах
           </span>
-        <h2 className="text-display-2 font-heading font-bold text-[var(--on-bg)]">
-  Метрики, которыми гордимся
-</h2>
+          <h2 className="text-display-2 font-heading font-bold text-[var(--on-bg)]">
+            Метрики, которыми гордимся
+          </h2>
         </div>
 
         {/* Glass panel */}
@@ -68,36 +68,36 @@ export function StatsSection() {
                 `}
                 style={{ animationDelay: `${i * 100}ms` }}
               >
-                {/* Accent dot */}
+                {/* Accent dot — тёмно-синий */}
                 <div 
                   className="w-2 h-2 rounded-full mx-auto mb-4 transition-transform duration-300 group-hover:scale-150"
-                  style={{ backgroundColor: s.accent }}
+                  style={{ backgroundColor: "var(--primary)" }}
                 />
                 
-                {/* Value */}
+                {/* Value — без акцента, обычный текст */}
                 <p className="text-display-2 lg:text-display-1 font-heading font-bold text-[var(--on-bg)] mb-3 tracking-tight">
                   {s.value}
                 </p>
                 
-                {/* Label */}
-                <p className="text-body-3 text-[var(--on-bg-medium)] uppercase tracking-widest">
+                {/* Label — тёмно-синий */}
+                <p className="text-body-3 font-medium uppercase tracking-widest" style={{ color: "var(--primary)" }}>
                   {s.label}
                 </p>
 
-                {/* Hover indicator line */}
+                {/* Hover indicator line — тёмно-синий */}
                 <div 
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 group-hover:w-12 transition-all duration-300 rounded-full"
-                  style={{ backgroundColor: s.accent }}
+                  style={{ backgroundColor: "var(--primary)" }}
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Bottom decorative line */}
+        {/* Bottom decorative line — тёмно-синий акцент */}
         <div className="mt-16 flex items-center justify-center gap-4">
           <div className="h-px w-16 bg-[var(--outline)]" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-4)]" />
+          <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "var(--primary)" }} />
           <div className="h-px w-16 bg-[var(--outline)]" />
         </div>
       </Container>
