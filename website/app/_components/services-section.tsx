@@ -100,26 +100,29 @@ export function ServicesSection() {
         .dark .watermark {
           opacity: 0.18;
         }
+          .service-glow-brand {
+  background: radial-gradient(circle, var(--brand-1) 0%, transparent 70%);
+  opacity: 0.2;
+}
+.service-glow-teal {
+  background: radial-gradient(circle, var(--teal-1) 0%, transparent 70%);
+  opacity: 0.15;
+}
+.dark .service-glow-brand {
+  opacity: 0.08;
+}
+.dark .service-glow-teal {
+  opacity: 0.08;
+}
       `}</style>
 
       {/* Фоновая сетка */}
       <div className="absolute inset-0 grid-bg-light pointer-events-none" />
 
       {/* Мягкое свечение */}
-      <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--brand-1) 0%, transparent 70%)",
-          opacity: 0.2,
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, var(--teal-1) 0%, transparent 70%)",
-          opacity: 0.15,
-        }}
-      />
+    {/* Мягкое свечение — приглушаем в тёмной теме */}
+<div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none service-glow-brand" />
+<div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none service-glow-teal" />
 
       <Container className="relative z-10">
         {/* Заголовок */}

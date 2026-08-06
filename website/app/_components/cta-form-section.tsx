@@ -41,17 +41,25 @@ export function CTAFormSection() {
             linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
           background-size: 50px 50px;
         }
+          .cta-glow-brand {
+  background: radial-gradient(circle, var(--brand-1) 0%, transparent 70%);
+  opacity: 0.2;
+}
+.cta-glow-green {
+  background: radial-gradient(circle, var(--green-1) 0%, transparent 70%);
+  opacity: 0.15;
+}
+.dark .cta-glow-brand {
+  opacity: 0.06;
+}
+.dark .cta-glow-green {
+  opacity: 0.05;
+}
       `}</style>
 
       <div className="absolute inset-0 grid-bg-light pointer-events-none" />
-      <div
-        className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none -translate-y-1/2"
-        style={{ background: "radial-gradient(circle, var(--brand-1) 0%, transparent 70%)", opacity: 0.2 }}
-      />
-      <div
-        className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--green-1) 0%, transparent 70%)", opacity: 0.15 }}
-      />
+    <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none -translate-y-1/2 cta-glow-brand" />
+<div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full pointer-events-none cta-glow-green" />
 
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">

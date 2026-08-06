@@ -75,19 +75,20 @@ export function HeroSection() {
             linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
           background-size: 60px 60px;
         }
+          .hero-glow {
+  background: radial-gradient(circle, var(--brand-3) 0%, transparent 70%);
+  opacity: 0.2;
+}
+.dark .hero-glow {
+  opacity: 0.08;
+}
       `}</style>
 
       {/* Background layers */}
       <div className="absolute inset-0 grid-bg pointer-events-none" />
 
-      {/* Radial glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, var(--brand-3) 0%, transparent 70%)',
-          opacity: 0.2
-        }}
-      />
+     {/* Radial glow — менее заметный в тёмной теме */}
+<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none hero-glow" />
 
       {/* Small glowing orbs */}
       <div className="absolute top-[30%] left-[10%] w-2 h-2 rounded-full bg-[var(--brand-5)] animate-pulse-glow" />
