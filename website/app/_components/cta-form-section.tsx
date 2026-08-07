@@ -58,6 +58,15 @@ export function CTAFormSection() {
         .dark .cta-ring {
           opacity: 0.15;
         }
+
+        /* Анимация стрелки-подсказки при скролле */
+        .scroll-hint {
+          animation: scroll-hint 1.8s ease-in-out infinite;
+        }
+        @keyframes scroll-hint {
+          0%, 100% { transform: translate(-50%, 0); opacity: 0.7; }
+          50% { transform: translate(-50%, 8px); opacity: 0; }
+        }
       `}</style>
 
       <div className="absolute inset-0 grid-bg-light pointer-events-none" />
@@ -122,31 +131,33 @@ export function CTAFormSection() {
                 </div>
                 <span className="text-caption text-[var(--on-bg-low)]">Форма заявки</span>
               </div>
-              
-              {/* iframe внутри прокручиваемого контейнера */}
-          {/* iframe внутри прокручиваемого контейнера — с запасом на ошибки */}
-<div
-  className="p-3 lg:p-4 bg-transparent"
-  style={{
-    height: '600px',
-    overflowY: 'auto',
-    overscrollBehavior: 'contain',
-    WebkitOverflowScrolling: 'touch',
-    touchAction: 'pan-y',
-  }}
->
-  <iframe
-    src="https://forms.yandex.ru/cloud/6a7478fa505690096f0d3e17/?iframe=1"
-    name="ya-form-6a7478fa505690096f0d3e17"
-    width="100%"
-    height="800"
-    frameBorder="0"
-    className="w-full bg-transparent rounded-xl"
-    style={{
-      clipPath: 'inset(0 0 50px 0)',
-    }}
-  />
-</div>
+
+              {/* iframe — на телефоне во всю высоту без скролла,
+                  на lg+ — скролл внутри + стрелка-подсказка */}
+              <div
+                className="relative p-3 lg:p-4 bg-transparent h-auto overflow-visible lg:h-[600px] lg:overflow-y-auto"
+                style={{
+                  overscrollBehavior: 'contain',
+                  WebkitOverflowScrolling: 'touch',
+                }}
+              >
+                <iframe
+                  src="https://forms.yandex.ru/cloud/6a7478fa505690096f0d3e17/?iframe=1"
+                  name="ya-form-6a7478fa505690096f0d3e17"
+                  width="100%"
+                  frameBorder="0"
+                  className="w-full h-[860px] lg:h-[900px] bg-transparent rounded-xl"
+                />
+                {/* Стрелка-подсказка только на lg+ */}
+                <div
+                  className="hidden lg:block absolute bottom-4 left-1/2 pointer-events-none scroll-hint"
+                  style={{ color: 'var(--on-bg-low)' }}
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
